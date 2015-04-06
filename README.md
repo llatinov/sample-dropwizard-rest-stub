@@ -1,1 +1,1 @@
-# dropwizard-rest-stub
+# sample-dropwizard-rest-stub
