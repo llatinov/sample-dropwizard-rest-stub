@@ -2,6 +2,7 @@ package com.automationrhapsody.reststub;
 
 import com.automationrhapsody.reststub.resources.BookService;
 import com.automationrhapsody.reststub.resources.PersonService;
+import com.automationrhapsody.reststub.resources.ProductsServlet;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 
@@ -18,6 +19,8 @@ public class RestStubApp extends Application<RestStubConfig> {
 
         final BookService bookService = new BookService();
         env.jersey().register(bookService);
+
+        env.servlets().addServlet("ProductsServlet", ProductsServlet.class).addMapping("/products");
 
         final RestStubCheck healthCheck = new RestStubCheck(config.getVersion());
         env.healthChecks().register("template", healthCheck);
