@@ -27,4 +27,4 @@ Returns JSON list of books showing project Lombok functionality described in <a 
 
 ### Products ###
 
-Simple web page showing Servlet with Apache Velocity templates engine described in <a href="" target="_blank">???</a> post. Endpoint is: http://localhost:9000/products
+Simple web page showing Servlet with Apache Velocity templates engine described in <a href="http://automationrhapsody.com/jps-alternative-for-dropwizard-servlet-with-apache-velocity-template-engine/" target="_blank">JPS alternative for Dropwizard – Servlet with Apache Velocity template engine</a> post. Endpoint is: http://localhost:9000/products
