@@ -1,8 +1,11 @@
 package com.automationrhapsody.reststub;
 
+import com.automationrhapsody.reststub.filters.AuthenticateFilter;
 import com.automationrhapsody.reststub.resources.BookService;
+import com.automationrhapsody.reststub.resources.BooksSecureService;
 import com.automationrhapsody.reststub.resources.PersonService;
 import com.automationrhapsody.reststub.resources.ProductsServlet;
+
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 
@@ -19,6 +22,9 @@ public class RestStubApp extends Application<RestStubConfig> {
 
         final BookService bookService = new BookService();
         env.jersey().register(bookService);
+
+        env.jersey().register(BooksSecureService.class);
+        env.jersey().register(AuthenticateFilter.class);
 
         env.servlets().addServlet("ProductsServlet", ProductsServlet.class).addMapping("/products");
 
