@@ -25,6 +25,10 @@ Database where you can add, get or remove persons with JSON showing RESTful web 
 
 Returns JSON list of books showing project Lombok functionality described in <a href="http://automationrhapsody.com/get-rid-of-getters-and-setters/" target="_blank">Get rid of Getters and Setters</a> post. Endpoint is: http://localhost:9000/books
 
+### Secure Books ###
+
+Returns JSON list of books showing authentication mechanism described in <a href="http://automationrhapsody.com/implement-secure-api-authentication-http-dropwizard/" target="_blank">Implement secure API authentication over HTTP with Dropwizard</a> post. Endpoint is: http://localhost:9000/secure/books
+
 ### Products ###
 
 Simple web page showing Servlet with Apache Velocity templates engine described in <a href="http://automationrhapsody.com/jps-alternative-for-dropwizard-servlet-with-apache-velocity-template-engine/" target="_blank">JPS alternative for Dropwizard – Servlet with Apache Velocity template engine</a> post. Endpoint is: http://localhost:9000/products
