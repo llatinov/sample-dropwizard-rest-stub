@@ -137,6 +137,20 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- PITest for mutation testing -->
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.1.10</version>
+                <configuration>
+                    <targetClasses>
+                        <param>com.automationrhapsody.reststub.persistence*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>com.automationrhapsody.reststub.persistence*</param>
+                    </targetTests>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

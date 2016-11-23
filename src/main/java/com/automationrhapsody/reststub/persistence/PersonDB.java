@@ -35,7 +35,7 @@ public class PersonDB {
 
     public static void remove() {
         if (!PERSONS.keySet().isEmpty()) {
-            PERSONS.remove(PERSONS.keySet().toArray()[0]);
+            PERSONS.remove(PERSONS.keySet().toArray()[PERSONS.keySet().size() - 1]);
         }
     }
 
