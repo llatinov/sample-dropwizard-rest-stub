@@ -3,12 +3,12 @@ package com.automationrhapsody.reststub.persistence;
 import com.automationrhapsody.reststub.data.Person;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class PersonDB {
-    private static final Map<Integer, Person> PERSONS = new HashMap<>();
+    private static final Map<Integer, Person> PERSONS = new TreeMap<>();
 
     static {
         PERSONS.put(1, new Person(1, "FN1", "LN1", "email1@email.na"));
