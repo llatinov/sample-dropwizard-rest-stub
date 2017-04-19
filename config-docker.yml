@@ -1,0 +1,20 @@
+version: ${ENV_VARIABLE_VERSION:- 0.0.2}
+
+# Change default server ports
+server:
+  applicationConnectors:
+  - type: http
+    port: 9000
+  adminConnectors:
+  - type: http
+    port: 9001
+
+# Log to console because of docker
+logging:
+  appenders:
+    - type: console
+      threshold: INFO
+      target: stdout
+    - type: console
+      threshold: ERROR
+      target: stderr

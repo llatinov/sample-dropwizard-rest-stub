@@ -7,6 +7,9 @@ import com.automationrhapsody.reststub.resources.PersonService;
 import com.automationrhapsody.reststub.resources.ProductsServlet;
 
 import io.dropwizard.Application;
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
+import io.dropwizard.configuration.SubstitutingSourceProvider;
+import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
 public class RestStubApp extends Application<RestStubConfig> {
@@ -31,5 +34,11 @@ public class RestStubApp extends Application<RestStubConfig> {
         final RestStubCheck healthCheck = new RestStubCheck(config.getVersion());
         env.healthChecks().register("template", healthCheck);
         env.jersey().register(healthCheck);
+    }
+
+    @Override
+     public void initialize(Bootstrap<RestStubConfig> bootstrap) {
+        bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(
+            bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor(false)));
     }
 }
