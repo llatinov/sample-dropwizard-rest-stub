@@ -1,4 +1,4 @@
-FROM openjdk:8u121-jdk
+FROM openjdk:8u121-jre-alpine
 MAINTAINER Automation Rhapsody http://automationrhapsody.com/
 
 WORKDIR /var/dropwizard-rest-stub
