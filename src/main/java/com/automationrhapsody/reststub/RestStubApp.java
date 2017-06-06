@@ -30,14 +30,12 @@ public class RestStubApp extends Application<RestStubConfig> {
         env.jersey().register(AuthenticateFilter.class);
 
         env.servlets().addServlet("ProductsServlet", ProductsServlet.class).addMapping("/products");
-
-        final RestStubCheck healthCheck = new RestStubCheck(config.getVersion());
-        env.healthChecks().register("template", healthCheck);
-        env.jersey().register(healthCheck);
+        
+        env.healthChecks().register("template", new RestStubCheck(config.getVersion()));
     }
 
     @Override
-     public void initialize(Bootstrap<RestStubConfig> bootstrap) {
+    public void initialize(Bootstrap<RestStubConfig> bootstrap) {
         bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(
             bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor(false)));
     }

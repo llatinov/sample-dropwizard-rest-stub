@@ -5,6 +5,7 @@ This project is intended to demonstrate how to create RESTful server stub with D
  * <a href="http://automationrhapsody.com/jps-alternative-for-dropwizard-servlet-with-apache-velocity-template-engine/">JPS alternative for Dropwizard – Servlet with Apache Velocity template engine</a>
  * <a href="http://automationrhapsody.com/implement-secure-api-authentication-http-dropwizard/">Implement secure API authentication over HTTP with Dropwizard</a>
  * <a href="http://automationrhapsody.com/run-dropwizard-application-docker-templated-configuration-using-environment-variables/">Run Dropwizard application in Docker with templated configuration using environment variables</a>
+ * <a href="http://automationrhapsody.com/start-java-application-linux-service/">Start Java application as a Linux service</a>
 
 ## Build ##
  * Install and configure <a href="https://maven.apache.org/install.html" target="_blank">Maven</a>

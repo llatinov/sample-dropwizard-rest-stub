@@ -9,7 +9,7 @@ server:
   - type: http
     port: 9001
 
-# Log to console because of docker
+# Log to console for Docker
 logging:
   appenders:
     - type: console
