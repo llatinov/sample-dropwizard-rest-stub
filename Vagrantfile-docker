@@ -1,0 +1,32 @@
+Vagrant.configure('2') do |config|
+
+  config.vm.hostname = 'dropwizard'
+  config.vm.box = 'opscode-centos-7.2'
+  config.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box'
+
+  config.vm.synced_folder './', '/vagrant'
+
+  config.vm.network :forwarded_port, guest: 9000, host: 9000
+  config.vm.network :forwarded_port, guest: 9001, host: 9001
+
+  config.vm.provider :virtualbox do |vb|
+    vb.name = 'dropwizard-rest-stub-docker'
+    vb.customize ['modifyvm', :id, '--memory', '768', '--cpus', '2']
+  end
+
+  config.vm.provision :shell do |shell|
+    shell.inline = <<-SHELL
+      sudo yum -y install epel-release
+      sudo yum -y install python-pip
+      sudo pip install --upgrade pip
+      sudo pip install six==1.4
+      sudo pip install docker-py
+    SHELL
+  end
+
+  config.vm.provision :docker do |docker|
+    docker.build_image '/vagrant/.', args: '-t dropwizard-rest-stub'
+    docker.run 'dropwizard-rest-stub', args: '-it -p 9000:9000 -p 9001:9001 -e ENV_VARIABLE_VERSION=1.1.1'
+  end
+
+end

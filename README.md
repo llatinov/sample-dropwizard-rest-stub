@@ -1,16 +1,19 @@
 # sample-dropwizard-rest-stub #
 This project is intended to demonstrate how to create RESTful server stub with Dropwizard as well as other  All topics that this project is used for are:
- * <a href="http://automationrhapsody.com/build-a-rest-stub-server-with-dropwizard/">Build a RESTful stub server with Dropwizard</a>
- * <a href="http://automationrhapsody.com/get-rid-of-getters-and-setters/" target="_blank">Get rid of Getters and Setters</a>
- * <a href="http://automationrhapsody.com/jps-alternative-for-dropwizard-servlet-with-apache-velocity-template-engine/">JPS alternative for Dropwizard – Servlet with Apache Velocity template engine</a>
- * <a href="http://automationrhapsody.com/implement-secure-api-authentication-http-dropwizard/">Implement secure API authentication over HTTP with Dropwizard</a>
- * <a href="http://automationrhapsody.com/run-dropwizard-application-docker-templated-configuration-using-environment-variables/">Run Dropwizard application in Docker with templated configuration using environment variables</a>
- * <a href="http://automationrhapsody.com/start-java-application-linux-service/">Start Java application as a Linux service</a>
+* <a href="http://automationrhapsody.com/build-a-rest-stub-server-with-dropwizard/">Build a RESTful stub server with Dropwizard</a>
+* <a href="http://automationrhapsody.com/get-rid-of-getters-and-setters/" target="_blank">Get rid of Getters and Setters</a>
+* <a href="http://automationrhapsody.com/jps-alternative-for-dropwizard-servlet-with-apache-velocity-template-engine/">JPS alternative for Dropwizard – Servlet with Apache Velocity template engine</a>
+* <a href="http://automationrhapsody.com/implement-secure-api-authentication-http-dropwizard/">Implement secure API authentication over HTTP with Dropwizard</a>
+* <a href="http://automationrhapsody.com/run-dropwizard-application-docker-templated-configuration-using-environment-variables/">Run Dropwizard application in Docker with templated configuration using environment variables</a>
+* <a href="http://automationrhapsody.com/install-java-application-linux-service/">Install Java application as a Linux service</a>
+* <a href="http://automationrhapsody.com/run-dropwizard-java-application-vagrant/">Run Dropwizard Java application on Vagrant</a>
+* <a href="http://automationrhapsody.com/run-docker-container-vagrant/">Run Docker container on Vagrant</a>
+* <a href="http://automationrhapsody.com/run-multiple-machines-single-vagrant-file/">Run multiple machines in a single Vagrant file</a>
 
 ## Build ##
- * Install and configure <a href="https://maven.apache.org/install.html" target="_blank">Maven</a>
- * Open cmd.exe and navigate to folder where project's pom.xml file is.
- * Build project and package JAR with following command
+* Install and configure <a href="https://maven.apache.org/install.html" target="_blank">Maven</a>
+* Open cmd.exe and navigate to folder where project's pom.xml file is.
+* Build project and package JAR with following command
 
 `mvn clean package`
 
@@ -20,12 +23,12 @@ Run JAR with following command
 `java -jar target/sample-dropwizard-rest-stub-1.0-SNAPSHOT.jar server config.yml`
 
 ## Docker ##
- * Install Docker
- * Build Docker container with following command
+* Install Docker
+* Build Docker container with following command
 
 `docker build -t dropwizard-rest-stub .`
 
- * Run Docker container with following command
+* Run Docker container with following command
 
 `docker run -it -p 9000:9000 -p 9001:9001 -e ENV_VARIABLE_VERSION=1.1.1 dropwizard-rest-stub`
 

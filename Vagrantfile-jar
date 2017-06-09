@@ -1,0 +1,31 @@
+Vagrant.configure('2') do |config|
+
+  config.vm.hostname = 'dropwizard'
+  config.vm.box = 'opscode-centos-7.2'
+  config.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box'
+
+  config.vm.synced_folder './', '/vagrant'
+
+  config.vm.network :forwarded_port, guest: 9000, host: 9000
+  config.vm.network :forwarded_port, guest: 9001, host: 9001
+
+  config.vm.provider :virtualbox do |vb|
+    vb.name = 'dropwizard-rest-stub-jar'
+  end
+
+  config.vm.provision :shell do |shell|
+    shell.inline = <<-SHELL
+      sudo service dropwizard stop
+      sudo yum -y install java
+      sudo mkdir -p /var/dropwizard-rest-stub
+      sudo mkdir -p /var/dropwizard-rest-stub/logs
+      sudo cp /vagrant/target/sample-dropwizard-rest-stub-1.0-SNAPSHOT.jar /var/dropwizard-rest-stub/dropwizard-rest-stub.jar
+      sudo cp /vagrant/config-vagrant.yml /var/dropwizard-rest-stub/config.yml
+      sudo cp /vagrant/linux_service_file /etc/init.d/dropwizard
+      # Replace CR+LF with LF because of Windows
+      sudo sed -i -e 's/\r//g' /etc/init.d/dropwizard
+      sudo service dropwizard start
+    SHELL
+  end
+
+end

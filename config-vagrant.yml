@@ -1,0 +1,24 @@
+version: 0.0.1
+
+# Change default server ports
+server:
+  applicationConnectors:
+  - type: http
+    port: 9000
+  adminConnectors:
+  - type: http
+    port: 9001
+
+# Log to file for Vagrant
+logging:
+  appenders:
+    - type: file
+      threshold: WARN
+      logFormat: "%date{ISO8601} %level %logger - %msg%n"
+      currentLogFilename: /var/dropwizard-rest-stub/logs/error.log
+      archive: false
+    - type: file
+      threshold: DEBUG
+      logFormat: "%date{ISO8601} %level %logger - %msg%n"
+      currentLogFilename: /var/dropwizard-rest-stub/logs/application.log
+      archive: false
