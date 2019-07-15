@@ -25,6 +25,7 @@ Vagrant.configure('2') do |config|
         sudo cp /vagrant/linux_service_file /etc/init.d/dropwizard
         # Replace CR+LF with LF because of Windows
         sudo sed -i -e 's/\r//g' /etc/init.d/dropwizard
+        sudo chmod +x /etc/init.d/dropwizard
         sudo service dropwizard start
       SHELL
     end
