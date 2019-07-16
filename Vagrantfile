@@ -17,7 +17,7 @@ Vagrant.configure('2') do |config|
     jar.vm.provision :shell do |shell|
       shell.inline = <<-SHELL
         sudo service dropwizard stop
-        sudo yum -y install java
+        sudo yum -y install java-1.8.0-openjdk-devel
         sudo mkdir -p /var/dropwizard-rest-stub
         sudo mkdir -p /var/dropwizard-rest-stub/logs
         sudo cp /vagrant/target/sample-dropwizard-rest-stub-1.0-SNAPSHOT.jar /var/dropwizard-rest-stub/dropwizard-rest-stub.jar

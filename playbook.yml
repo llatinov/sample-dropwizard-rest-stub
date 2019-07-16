@@ -1,0 +1,65 @@
+---
+
+- name: Deploy 'dropwizard-rest-stub'
+  hosts: all
+  vars:
+    service_file: /etc/init.d/dropwizard
+  tasks:
+
+    - name: Check if service is installed
+      stat:
+        path: '{{ service_file }}'
+      register: service_result
+
+    - name: Stop service
+      service:
+        name: dropwizard
+        state: stopped
+        use: service
+      when: service_result.stat.exists == True
+
+    - name: Install Java 8
+      yum:
+        name: java-1.8.0-openjdk-devel
+
+    - name: Create folders
+      file:
+        path: /var/dropwizard-rest-stub/logs
+        state: directory
+
+    - name: Copy JAR file
+      copy:
+        src: target/sample-dropwizard-rest-stub-1.0-SNAPSHOT.jar
+        dest: /var/dropwizard-rest-stub/dropwizard-rest-stub.jar
+
+    - name: Copy configuration file
+      copy:
+        src: config-vagrant.yml
+        dest: /var/dropwizard-rest-stub/config.yml
+
+    - name: Copy service file
+      copy:
+        src: linux_service_file
+        dest: '{{ service_file }}'
+
+    - name: Fix service file because of Windows new lines
+      replace:
+        path: '{{ service_file }}'
+        regexp: '\r'
+        replace: ''
+
+    - name: Make service file executable
+      file:
+        path: '{{ service_file }}'
+        mode: 755
+
+    - name: Reload services
+      systemd:
+        daemon_reload: yes
+
+    - name: Start service
+      service:
+        name: dropwizard
+        state: started
+        use: service
+

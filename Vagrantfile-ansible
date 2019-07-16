@@ -1,0 +1,19 @@
+Vagrant.configure('2') do |config|
+
+  config.vm.hostname = 'dropwizard'
+  config.vm.box = 'opscode-centos-7.2'
+  config.vm.box_url = 'http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box'
+
+  config.vm.network :forwarded_port, guest: 9000, host: 9200
+  config.vm.network :forwarded_port, guest: 9001, host: 9201
+
+  config.vm.provider :virtualbox do |vb|
+    vb.name = 'dropwizard-rest-stub-ansible'
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.become = true
+    ansible.playbook = "playbook.yml"
+  end
+
+end
