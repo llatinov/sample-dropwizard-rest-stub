@@ -62,4 +62,3 @@
         name: dropwizard
         state: started
         use: service
-
